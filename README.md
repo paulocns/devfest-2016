@@ -2,4 +2,4 @@
 
 Esse projeto foi feito para a minha apresentação no devfest 2016
 
-This Project was made for mine Devfest 2016 presentation
+This Project was made for my presentation at Devfest 2016 
