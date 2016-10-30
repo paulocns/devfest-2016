@@ -2,7 +2,12 @@ package com.psato.devfest.presentation.showlist;
 
 import android.databinding.Bindable;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.util.Log;
+import android.view.KeyEvent;
+import android.view.inputmethod.EditorInfo;
+import android.widget.TextView;
 
 import com.psato.devfest.BR;
 import com.psato.devfest.data.model.ShowInfo;
@@ -49,8 +54,17 @@ public class ShowListViewModel extends BaseViewModel {
         return mShowInfoList;
     }
 
-    public void onSearcgClicked(){
+    public void onSearchClicked(){
         searchShow();
+    }
+
+    public boolean onEditorAction(@NonNull final TextView textView, final int actionId,
+                                  @Nullable final KeyEvent keyEvent) {
+        if(actionId == EditorInfo.IME_ACTION_DONE){
+            searchShow();
+            return true;
+        }
+        return false;
     }
 
     @Override

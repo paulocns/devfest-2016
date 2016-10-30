@@ -36,7 +36,7 @@ public class ShowListViewModelTest {
     public void testSearch() {
         mViewModel.setQuery("big");
         assertTrue(mViewModel.getShowList().isEmpty());
-        mViewModel.onSearcgClicked();
+        mViewModel.onSearchClicked();
         assertTrue(mViewModel.getShowLoading());
         ArgumentCaptor<Subscriber> captor = ArgumentCaptor.forClass(Subscriber.class);
         Mockito.verify(mSearchShows).setQuery("big");
