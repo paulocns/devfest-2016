@@ -35,7 +35,8 @@
                 android:inputType="text"
                 android:imeOptions="actionDone"
                 android:onEditorAction="@{viewModel::onEditorAction}"
-                android:text="@={viewModel.query}"/>
+                android:text="@={viewModel.query}"
+                app:extractUI="@{false}"/>
 
             <ImageButton
                 android:layout_width="32dp"
