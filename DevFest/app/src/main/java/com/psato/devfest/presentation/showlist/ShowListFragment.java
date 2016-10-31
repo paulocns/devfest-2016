@@ -1,13 +1,11 @@
 package com.psato.devfest.presentation.showlist;
 
-import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.support.v7.widget.LinearLayoutManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,12 +35,12 @@ public class ShowListFragment extends BaseFragment {
         mBinding.showListRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mBinding.showListRecyclerView.setAdapter(new ShowListAdapter());
         mBinding.showListRecyclerView.addItemDecoration(new DividerDecoration.Builder(getContext()).build());
-        getLoaderManager().initLoader(Constants.LoaderID.SHOW_LIST_ID,new Bundle(),new LoaderCallBack(this));
+        getLoaderManager().initLoader(Constants.LoaderID.SHOW_LIST_ID, new Bundle(), new LoaderCallBack(this));
         return view;
     }
 
 
-    private void bindViewModel(ShowListViewModel viewModel){
+    private void bindViewModel(ShowListViewModel viewModel) {
         mBinding.setViewModel(viewModel);
         mBinding.executePendingBindings();
     }
@@ -53,7 +51,7 @@ public class ShowListFragment extends BaseFragment {
         super.onDestroyView();
     }
 
-    private static class LoaderCallBack implements LoaderManager.LoaderCallbacks{
+    private static class LoaderCallBack implements LoaderManager.LoaderCallbacks {
 
         private WeakReference<ShowListFragment> mFragmentReference;
 
@@ -64,9 +62,9 @@ public class ShowListFragment extends BaseFragment {
         @Override
         public Loader onCreateLoader(int id, Bundle args) {
             ShowListFragment fragment = mFragmentReference.get();
-            if(fragment != null){
+            if (fragment != null) {
                 DevFestApplication app = (DevFestApplication) fragment.getActivity().getApplication();
-                return new ShowListVMLoader(fragment.getContext(),app.getApplicationComponent());
+                return new ShowListVMLoader(fragment.getContext(), app.getApplicationComponent());
             }
             return null;
         }
@@ -74,7 +72,7 @@ public class ShowListFragment extends BaseFragment {
         @Override
         public void onLoadFinished(Loader loader, Object data) {
             ShowListFragment fragment = mFragmentReference.get();
-            if(fragment != null){
+            if (fragment != null) {
                 fragment.bindViewModel((ShowListViewModel) data);
             }
         }
